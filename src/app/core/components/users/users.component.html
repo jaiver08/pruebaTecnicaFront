@@ -1,0 +1,19 @@
+<div class="container py-5" *ngIf="user">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
+      <div class="card">
+        <img src="{{ user.avatar_url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">{{ user.bio }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Seguidores: {{ user.followers }}</li>
+          <li class="list-group-item">Seguidos: {{ user.following }}</li>
+          <li class="list-group-item">Repo publico: {{ user.public_repos }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

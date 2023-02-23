@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row justify-content-md-center py-5">
+    <div class="col-12 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="username" class="form-label">Ingresa un nombre:</label>
+              <input type="text" [(ngModel)]="username" name="username"
+                class="form-control" id="username" aria-describedby="userHelp">
+                <p *ngIf="menssageError">El usuario: <small>{{ username }}</small> no existe</p>
+            </div>
+            <div class="text-center">
+              <button (click)="githubUser()"
+                class="btn btn-info text">Buscar usuario <i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center" *ngIf="getuser">
+    <div class="col-6 col-lg-4">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ getuser.avatar_url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ getuser.name }}</h5>
+          <p class="card-text">{{ getuser.bio }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <p class="m-0">User: <small>{{ getuser.login }}</small></p>
+          </li>
+          <li class="list-group-item">
+            <p class="m-0">Blog: <small>{{ getuser.blog }}</small></p>
+          </li>
+          <li class="list-group-item">
+            <p class="m-0">Compañia: <small>{{ getuser.company }}</small></p>
+          </li>
+          <li class="list-group-item">
+            <p class="m-0">Seguidores: <small>{{ getuser.followers }}</small></p>
+          </li>
+          <li class="list-group-item">
+            <p class="m-0">Seguidos: <small>{{ getuser.following }}</small></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-6 col-lg-4">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of getTenUsers">
+          <a [routerLink]="['/user', user.login]">
+            <small>ID: {{ user.id }}</small>
+            <h5 class="mb-1"><i class="fa-solid fa-user me-2"></i> {{ user.login }}</h5>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
